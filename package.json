@@ -1,0 +1,28 @@
+{
+  "name": "node-amqp-mongo",
+  "version": "0.0.1",
+  "description": "This sample query an SQL database, write the result at rabbitmq and mongodb",
+  "private": true,
+  "main": "engine.js",
+  "scripts": {
+    "start": "node engine.js"
+  },
+  "author": "Érick Fabricio Cellani",
+  "dependencies": {
+    "amqplib": "^0.5.1",
+    "async": "^2.4.0",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "log4js": "^1.1.1",
+    "mongoose": "^4.9.7",
+    "oracle-client": "^1.1.0",
+    "oracledb": "^1.13.1",
+    "promise": "^7.1.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-preset-es2015": "^6.9.0",
+    "mocha": "^3.0.0",
+    "nodemon": "^1.11.0"
+  }
+}
