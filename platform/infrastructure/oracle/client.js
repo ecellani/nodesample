@@ -11,12 +11,10 @@ const OracleClient = {
                     reject(err.message)
                     return
                 }
-                conn.execute(query.offers, {}, { outFormat: oracledb.OBJECT, maxRows: 10 }, (err, data) => {
-                    if (err) {
-                        reject(err.message)
-                        return
-                    }
-                    resolve(data)
+                var stream = conn.queryStream(query.offers, {}, { outFormat: oracledb.OBJECT, maxRows: 100 })
+                stream.on('error', (err) => reject(err.message))
+                stream.on('end', () => {
+                    console.log('stream.on.end')
                     conn.release((err) => {
                         if (err)
                             logger.error(err.message)
@@ -24,6 +22,7 @@ const OracleClient = {
                             logger.info('connection released')
                     })
                 })
+                resolve(stream)
             })
         })
     }
